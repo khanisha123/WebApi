@@ -21,23 +21,34 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get(int page=1)
         {
+            var query = _context.Products.AsQueryable();
             ProductReturnDto productReturnDto = new ProductReturnDto
             {
 
-                TotalCount = _context.Products.Count()
-            };
-            var dbPorducts = _context.Products.ToList();
-            foreach (var item in dbPorducts)
-            {
-                var productItemDto = new ProductItemDto
+                TotalCount = _context.Products.Count(),
+                Items = query.Skip((page - 1) * 5).Take(5).Select(p => new ProductItemDto
                 {
-                    Name = item.Name,
-                    Price = item.Price
-                };
-                productReturnDto.Items.Add(productItemDto);
-            }
+                    Name = p.Name,
+                    isDelete = p.isDelete,
+                    Price = p.Price,
+                    CreatedAt = p.CreatedAt,
+                    UpdateAt = p.UpdateAt
+                }).ToList()
+
+            };
+
+            var dbPorducts = _context.Products.ToList();
+            //foreach (var item in dbPorducts)
+            //{
+            //    var productItemDto = new ProductItemDto
+            //    {
+            //        Name = item.Name,
+            //        Price = item.Price
+            //    };
+            //    productReturnDto.Items.Add(productItemDto);
+            //}
             return Ok(productReturnDto);
         }
 

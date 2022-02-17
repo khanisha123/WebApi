@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace WebApi.Data.Entity
 {
-    public class Category
+    public class Category :BaseEntity
     {
+        public string Title { get; set; }
     }
 }
