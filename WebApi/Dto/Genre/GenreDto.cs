@@ -7,5 +7,7 @@ namespace WebApi.Dto.Genre
 {
     public class GenreDto
     {
+        public string Name { get; set; }
+        public List<string> Books { get; set; }
     }
 }

@@ -18,6 +18,8 @@ namespace WebApi.Data.DAL
         public DbSet<Category> categories { get; set; }
         public DbSet<Book> books { get; set; }
         public DbSet<Author> authors { get; set; }
+        public DbSet<Genre> genres { get; set; }
+        public DbSet<BookGenre> bookGenres { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
