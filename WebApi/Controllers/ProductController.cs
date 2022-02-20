@@ -66,7 +66,7 @@ namespace WebApi.Controllers
             }
             return StatusCode(200, product);
         }
-        [HttpPost]
+        [HttpPost("Create")]
         public IActionResult Create(ProductCreateDto productCreateDto)
         {
             Product newProduct = new Product
