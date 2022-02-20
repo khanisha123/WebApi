@@ -16,6 +16,8 @@ namespace WebApi.Data.DAL
         }
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> categories { get; set; }
+        public DbSet<Book> books { get; set; }
+        public DbSet<Author> authors { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

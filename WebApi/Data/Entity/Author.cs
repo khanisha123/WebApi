@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace WebApi.Data.Entity
 {
-    public class Author
+    public class Author :BaseEntity
     {
+        public int Name { get; set; }
+        public IList<Book> books { get; set; }
     }
 }
